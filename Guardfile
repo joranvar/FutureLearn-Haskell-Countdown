@@ -10,6 +10,7 @@ end
 def run_all_tests m
   print m
   execute %{
+    stack haddock
     stack test
   }
 end
