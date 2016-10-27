@@ -1,4 +1,4 @@
-TennisKata
+Countdown
 ==========
 
 New Haskell project using stack template `tasty-travis`.

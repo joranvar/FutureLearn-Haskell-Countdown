@@ -1,4 +1,4 @@
--- | TennisKata - http://www.codingdojo.org/cgi-bin/index.pl?KataTennis
+-- | Countdown -- Inspired by https://www.futurelearn.com/courses/functional-programming-haskell/1/steps/120287
 module Lib
   (
     -- * Exported functions
