@@ -7,6 +7,8 @@ module Lib
   , Value(..)
   -- * Exported function
   , countdown
+  -- * Helper function
+  , solve
   ) where
 
 -- | The possible operations to reach the solution
@@ -23,3 +25,7 @@ countdown :: Int -- ^ The target
           -> [Int] -- ^ The numbers to use
           -> Maybe Solution -- ^ The solution
 countdown = undefined
+
+-- | Calculate the result of the given Solution
+solve :: Solution -> Maybe Int
+solve = undefined
