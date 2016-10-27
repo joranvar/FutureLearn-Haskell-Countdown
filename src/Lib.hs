@@ -5,6 +5,8 @@ module Lib
     Operation(..)
   , Solution
   , Value(..)
+  -- * Exported function
+  , countdown
   ) where
 
 -- | The possible operations to reach the solution
@@ -15,3 +17,9 @@ type Solution = [Value]
 
 -- | A value that can be put on the stack for execution
 data Value = Op Operation | Val Int
+
+-- | Give the solution for the countdown problem for the given numbers and target
+countdown :: Int -- ^ The target
+          -> [Int] -- ^ The numbers to use
+          -> Maybe Solution -- ^ The solution
+countdown = undefined
