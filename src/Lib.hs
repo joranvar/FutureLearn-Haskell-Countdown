@@ -2,7 +2,7 @@
 module Lib
   (
     -- * Domain types
-    Operation(..)
+    Operation
   , Solution
   , Value(..)
   -- * Exported function
@@ -12,7 +12,7 @@ module Lib
   ) where
 
 -- | The possible operations to reach the solution
-data Operation = Plus | Minus | Times | DivideBy
+type Operation = Int -> Int -> Int
 
 -- | The stack of operations and numbers that will lead to a solution
 type Solution = [Value]

@@ -28,6 +28,6 @@ scTests =
 
 huTests :: [TestTree]
 huTests =
-  [ testCase "solve [1,1,Plus] == Just 2" $
-    solve [Val 1, Val 1, Op Plus] @?= Just 2
+  [ testCase "solve [1,1,+] == Just 2" $
+    solve [Val 1, Val 1, Op (+)] @?= Just 2
   ]
