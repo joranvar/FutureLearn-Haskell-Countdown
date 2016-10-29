@@ -11,6 +11,9 @@ module Lib
   , solve
   ) where
 
+import Control.Arrow ((&&&))
+import Data.Maybe (listToMaybe)
+
 -- | The possible operations to reach the solution
 type Operation = Int -> Int -> Int
 
@@ -40,7 +43,16 @@ instance Show Value where
 countdown :: Int -- ^ The target
           -> [Int] -- ^ The numbers to use
           -> Maybe Solution -- ^ The solution
-countdown = undefined
+countdown target ins =
+  listToMaybe
+  $ map fst
+  $ filter ((== Just target) . snd)
+  $ map (id &&& solve)
+  $ generateSolutions ins
+
+-- | Generate all possible solutions for the given numbers
+generateSolutions :: [Int] -> [Solution]
+generateSolutions = undefined
 
 -- | Calculate the result of the given Solution
 solve :: Solution -> Maybe Int
