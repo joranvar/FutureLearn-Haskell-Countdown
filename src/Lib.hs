@@ -25,6 +25,17 @@ instance Eq Value where
   (Val x) == (Val y) = x == y
   _ == _ = False
 
+instance Show Value where
+  show (Op opx) =
+    let result = 2 `opx` 10
+        value x | x == 2 * 10 = "*"
+        value x | x == 2 + 10 = "+"
+        value x | x == 2 `div` 10 = "/"
+        value x | x == 2 - 10 = "-"
+        value _ = "??"
+    in value result
+  show (Val x) = show x
+
 -- | Give the solution for the countdown problem for the given numbers and target
 countdown :: Int -- ^ The target
           -> [Int] -- ^ The numbers to use
