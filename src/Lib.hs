@@ -9,9 +9,12 @@ module Lib
   , countdown
   -- * Helper function
   , solve
+  , generateSolutions
+  , ops
   ) where
 
 import Control.Arrow ((&&&))
+import Data.List (subsequences, (\\))
 import Data.Maybe (listToMaybe)
 
 -- | The possible operations to reach the solution
@@ -52,7 +55,16 @@ countdown target ins =
 
 -- | Generate all possible solutions for the given numbers
 generateSolutions :: [Int] -> [Solution]
-generateSolutions = undefined
+generateSolutions [] = subsequences ops
+generateSolutions xs = do
+  p <- tail $ subsequences xs
+  o <- subsequences ops
+  other <- generateSolutions $ xs \\ p
+  return $ map Val p ++ o ++ other
+
+-- | The possible operations
+ops :: [Value]
+ops = [Op (+), Op (-), Op (*), Op div]
 
 -- | Calculate the result of the given Solution
 solve :: Solution -> Maybe Int
