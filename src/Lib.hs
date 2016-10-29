@@ -68,13 +68,13 @@ ops = [Op (+), Op (-), Op (*), Op div]
 
 -- | Calculate the result of the given Solution
 solve :: Solution -> Maybe Int
-solve s =
-  let (sol:rest) = reduce s []
-  in if null rest then Just sol else Nothing
+solve s = case reduce s [] of
+            [sol] -> Just sol
+            _ -> Nothing
 
 -- | Reduce the Solution as far as possible
 reduce :: Solution -> [Int] -> [Int]
 reduce [] xs = xs
 reduce (Val x:rest) xs = reduce rest (x:xs)
 reduce (Op op:rest) (x:y:xs) | (Op op /= Op div) || (y /= 0) = reduce rest (x `op` y:xs)
-reduce _ xs = xs
+reduce _ _ = []
