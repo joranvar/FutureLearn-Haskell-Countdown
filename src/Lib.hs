@@ -76,5 +76,5 @@ solve s =
 reduce :: Solution -> [Int] -> [Int]
 reduce [] xs = xs
 reduce (Val x:rest) xs = reduce rest (x:xs)
-reduce (Op op:rest) (x:y:xs) = reduce rest (y `op` x:xs)
+reduce (Op op:rest) (x:y:xs) = reduce rest (x `op` y:xs)
 reduce _ xs = xs
