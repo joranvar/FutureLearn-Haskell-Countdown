@@ -32,4 +32,6 @@ huTests =
     solve [Val 1, Val 1, Op (+)] @?= Just 2
   , testCase "countdown 2 [1,1] == Just [1,1,+]" $
     countdown 2 [1,1] @?= Just [Val 1, Val 1, Op (+)]
+  , testCase "countdown 927 [27,42,12,9,54,5] == Just [27,42,12,9,-,*,54,-,5,*,+] " $
+    countdown 927 [27,42,12,9,54,5] @?= Just [Val 27, Val 42, Val 12, Val 9,Op (-), Op (*), Val 54, Op (-), Val 5, Op (*), Op (+)]
   ]
