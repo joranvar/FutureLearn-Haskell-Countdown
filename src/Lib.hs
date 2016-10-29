@@ -20,6 +20,11 @@ type Solution = [Value]
 -- | A value that can be put on the stack for execution
 data Value = Op Operation | Val Int
 
+instance Eq Value where
+  (Op opx) == (Op opy) = 2 `opx` 10 == 2 `opy` 10
+  (Val x) == (Val y) = x == y
+  _ == _ = False
+
 -- | Give the solution for the countdown problem for the given numbers and target
 countdown :: Int -- ^ The target
           -> [Int] -- ^ The numbers to use
