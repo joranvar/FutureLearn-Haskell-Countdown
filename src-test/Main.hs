@@ -30,4 +30,6 @@ huTests :: [TestTree]
 huTests =
   [ testCase "solve [1,1,+] == Just 2" $
     solve [Val 1, Val 1, Op (+)] @?= Just 2
+  , testCase "countdown 2 [1,1] == Just [1,1,+]" $
+    countdown 2 [1,1] @?= Just [Val 1, Val 1, Op (+)]
   ]
