@@ -28,4 +28,13 @@ countdown = undefined
 
 -- | Calculate the result of the given Solution
 solve :: Solution -> Maybe Int
-solve = undefined
+solve s =
+  let (sol:rest) = reduce s []
+  in if null rest then Just sol else Nothing
+
+-- | Reduce the Solution as far as possible
+reduce :: Solution -> [Int] -> [Int]
+reduce [] xs = xs
+reduce (Val x:rest) xs = reduce rest (x:xs)
+reduce (Op op:rest) (x:y:xs) = reduce rest (y `op` x:xs)
+reduce _ xs = xs
